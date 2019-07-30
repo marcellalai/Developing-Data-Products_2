@@ -1,0 +1,30 @@
+---
+title: "Developing Data Products - W2 Assignment"
+author: "Marcella Lai"
+date: "30 juillet 2019"
+slidy_presentation: default
+always_allow_html: yes
+output: html_document  
+---
+
+<h1><br> The Colosseum of Rome : click to get there!<br></h1>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r, echo=FALSE ,  warning=FALSE}
+library(leaflet)
+
+Colosseo <- c("<a href= 'https://parcocolosseo.it/en' >The Colosseum of Rome</a>")
+ColIcon <- makeIcon( 
+ iconUrl = "https://parcocolosseo.it/sito/wp-content/uploads/2018/11/cropped-favicon_PARCO-1-32x32.png", 
+iconWidth = 25, iconHeight = 25
+) 
+my_map <- leaflet() %>%
+addTiles()%>%
+addMarkers(lat=41.8902, lng=12.4922, popup = Colosseo, icon = ColIcon)
+my_map
+
+```
