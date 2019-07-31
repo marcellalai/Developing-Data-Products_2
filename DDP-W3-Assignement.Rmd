@@ -1,0 +1,30 @@
+---
+title: "Show off creativity!"
+author: "Marcella Lai"
+date: "30 juillet 2019"
+output: ioslides_presentation
+---
+<br>DDP - W3 Assignment : create a web page presentation using R Markdown that features a plot created with Plotly<br>
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
+## My simple plot : Black cherry trees!
+ shows the measurement of Girth (tree diameter in inches) vs Volume  of timber in cubic ft  and Height in ft, using embedding R Code
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(plotly)
+plot_ly(trees, x = ~Girth, y = ~Volume,  z = ~Height ,type = "scatter3d", color = ~Girth)
+```
+
+## The Code
+```{r, echo=TRUE, eval=FALSE} 
+library(ggplot2)
+library(plotly)
+plot_ly(trees, x = ~Girth, y = ~Volume,  z = ~Height ,
+        type = "scatter3d", color = ~Girth)
+```
+###Try it! 
