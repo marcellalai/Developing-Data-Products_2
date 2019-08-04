@@ -2,8 +2,8 @@
 ========================================================
 author: Marcella Lai
 date: 02 August 2019
-autosize: true
-
+width: 1300
+height: 700
 
 
 
@@ -15,19 +15,16 @@ The data used is "iris" data set (standard R packages)
 It contains  features measured for 3 Iris  species, setosa, virginica, versicolor ;  it's an example of multivariate data set introduced by Ronald Fisher in 1936.
 <p>
 "Iris flowers" uses a linear regression model showing correlation between petal height and its width.
-
 "Iris flowers" application allows users 
-- to select what species investigate (one of three setosa, virginica, versicolor or ALL )
-- to know the value of intersept , according to choise, of the regression line.
-
-"Iris flowers" application draws plot of iris data set distributed by height (x axis) and weight (y axis).  The regression line is shown on the plot as well
+- to select what species investigate ( ALL species  or just one)
+- to know the related value of value of slope of regression model
+Application draws plot of iris data set distributed by height (x axis) and weight (y axis) and  the regression line.
 
 
 "Iris flowers" : details on data
 ========================================================
-The data used is "iris" data set, available with standard R packages.
-Data set consists of four measurements (length and width of the petals and sepals) for different 3 species of iris : 50 observations for each species, 150 in total.
-
+The data used is "iris" data set, available with standard R packages. 
+Data set consists of 4 measurements (length and width of the petals and sepals) for 3 species of iris : 50 observations for each species, 150 in total.
 
 ```r
 summary(iris)
@@ -54,20 +51,15 @@ summary(iris)
 "Iris flowers" : shiny files
 ========================================================
 The application is build using Shiny package and the source code is in 2 files:
-- ui.R
-- server.R
-<p>Both files can be found here: GitHub repo [RPub] (http://rpubs.com/XXX)
+"ui.R" and "server.R" (they can be found here: GitHub  <a href="https://github.com/marcellalai/Developing-Data-Products_2/tree/marcellalai-patch-1">repository</a>)
 <p>Following some extract from code 
 
 ```r
       irisInput <- input$inRadioButton
-      if (irisInput != "ALL")
-      {
+      if (irisInput != "ALL"){
           irisData <- subset(iris, Species == irisInput)
            modelLM <- lm(irisData$Petal.Width ~ irisData$Petal.Length, data = irisData)
-            plot(irisData$Petal.Length, irisData$Petal.Width , xlab = "Petal Length in cm",
-                  ylab = "Petal Width in cm", bty = "n", pch=21, 
-            main = paste("Iris Species - linear regression model for", irisInput, sep=" ")) 
+            plot(irisData$Petal.Length, irisData$Petal.Width , xlab = "Petal Length in cm", ylab = "Petal Width in cm", bty = "n", pch=21, main = paste("Iris Species - linear regression model for", irisInput, sep=" ")) 
           abline(modelLM, col = "red" ,lty= 2  , lwd=3)
         ...
 ```
